@@ -1,0 +1,24 @@
+{
+  "name": "api-rpc",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/api-rpc/src",
+  "projectType": "library",
+  "targets": {
+    "typegen": {
+      "executor": "nx:noop",
+      "dependsOn": [
+        {
+          "projects": ["api"],
+          "target": "typegen"
+        }
+      ]
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["typegen"],
+      "options": {
+        "command": "tsc --noEmit --project libs/api-rpc/tsconfig.json"
+      }
+    }
+  }
+}

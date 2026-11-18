@@ -1,0 +1,14 @@
+{
+  "name": "web-a-feature-todos",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/web-a/feature-todos/src",
+  "projectType": "library",
+  "targets": {
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --noEmit --project libs/web-a/feature-todos/tsconfig.json"
+      }
+    }
+  }
+}

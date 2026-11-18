@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2023",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "types": ["node"],
+    "paths": {
+      "@sample/api-rpc": ["./libs/api-rpc/src/index.ts"],
+      "@sample/ui": ["./libs/ui/src/index.ts"],
+      "@sample/web-a-feature-todos": [
+        "./libs/web-a/feature-todos/src/index.ts"
+      ],
+      "@sample/web-b-feature-todo-create": [
+        "./libs/web-b/feature-todo-create/src/index.ts"
+      ]
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "name": "api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/api/src",
+  "projectType": "application",
+  "targets": {
+    "typegen": {
+      "executor": "nx:run-commands",
+      "cache": true,
+      "inputs": [
+        "production",
+        "^production",
+        {
+          "externalDependencies": ["@typescript/native", "typescript"]
+        }
+      ],
+      "outputs": ["{workspaceRoot}/libs/api-rpc/src/__generated__"],
+      "options": {
+        "commands": [
+          "node -e \"fs.rmSync('libs/api-rpc/src/__generated__', { recursive: true, force: true })\"",
+          "tsc --project apps/api/tsconfig.typegen.json"
+        ],
+        "parallel": false
+      }
+    },
+    "typegen-watch": {
+      "executor": "nx:run-commands",
+      "continuous": true,
+      "dependsOn": ["typegen"],
+      "options": {
+        "command": "tsc --watch --preserveWatchOutput --project apps/api/tsconfig.typegen.json"
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --noEmit --project apps/api/tsconfig.json"
+      }
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "continuous": true,
+      "dependsOn": ["typegen-watch"],
+      "options": {
+        "command": "node --import tsx --watch apps/api/src/main.ts",
+        "env": {
+          "TSX_TSCONFIG_PATH": "tsconfig.base.json"
+        }
+      }
+    }
+  }
+}

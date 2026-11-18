@@ -1,0 +1,36 @@
+{
+  "name": "web-b",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/web-b/src",
+  "projectType": "application",
+  "targets": {
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --noEmit --project apps/web-b/tsconfig.json"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "outputs": ["{workspaceRoot}/dist/apps/web-b"],
+      "options": {
+        "command": "vite build",
+        "cwd": "apps/web-b"
+      }
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "continuous": true,
+      "dependsOn": [
+        {
+          "projects": ["api"],
+          "target": "typegen"
+        }
+      ],
+      "options": {
+        "command": "vite",
+        "cwd": "apps/web-b"
+      }
+    }
+  }
+}

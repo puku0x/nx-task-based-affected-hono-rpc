@@ -1,0 +1,5 @@
+.claude
+.nx
+dist
+libs/api-rpc/src/__generated__
+package-lock.json

@@ -1,0 +1,14 @@
+{
+  "name": "web-b-feature-todo-create",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/web-b/feature-todo-create/src",
+  "projectType": "library",
+  "targets": {
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --noEmit --project libs/web-b/feature-todo-create/tsconfig.json"
+      }
+    }
+  }
+}

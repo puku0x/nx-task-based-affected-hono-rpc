@@ -1,0 +1,33 @@
+{
+  "name": "nx-task-based-affected-hono-rpc",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "nx run-many -t typecheck",
+    "test": "nx run-many -t test",
+    "build": "nx run-many -t build",
+    "affected": "nx affected -t typecheck test build"
+  },
+  "dependencies": {
+    "@hono/node-server": "~2.1.6",
+    "hono": "~4.13.13",
+    "react": "~19.3.1",
+    "react-dom": "~19.3.1"
+  },
+  "devDependencies": {
+    "@nx/js": "24.0.4",
+    "@nx/vitest": "24.0.4",
+    "@types/node": "~24.12.0",
+    "@types/react": "~19.3.0",
+    "@types/react-dom": "~19.3.0",
+    "@typescript/native": "npm:typescript@7.0.2",
+    "@vitejs/plugin-react": "~6.1.0",
+    "nx": "24.0.4",
+    "prettier": "~3.9.10",
+    "tsx": "~4.23.15",
+    "typescript": "npm:@typescript/typescript6@6.0.2",
+    "vite": "~8.2.2",
+    "vitest": "~5.1.0"
+  }
+}
